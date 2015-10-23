@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>domscii</title>
+    <style>
+body { background: #005; color: #55f; font-family: monospace; }
+a { color: #aaf; }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>domscii</h1>
+      <p>DOM to ASCII &bull; <a href="https://github.com/dbkaplun/domscii">Fork on Github</a></p>
+    </header>
+    <pre></pre>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta1/html2canvas.min.js"></script>
+    <script src="domscii.js"></script>
+    <script>
+var inEl = document.querySelector('header');
+var outEl = document.querySelector('pre');
+
+domscii({el: inEl}).then(function (text) {
+  outEl.innerHTML = text;
+});
+    </script>
+  </body>
+</html>
