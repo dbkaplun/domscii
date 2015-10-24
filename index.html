@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>domscii</title>
     <style>
-body { background: #005; color: #55f; font-family: monospace; }
+body { color: #55f; font-family: monospace; }
+body, pre span { background: #005; }
+
 a { color: #aaf; }
+hr { border: 0; border-top: 1px solid #55f; }
+pre { position: absolute; top: 0; left: 0; margin: 0; }
+pre span { visibility: hidden; }
     </style>
   </head>
 
@@ -15,17 +20,62 @@ a { color: #aaf; }
       <h1>domscii</h1>
       <p>DOM to ASCII &bull; <a href="https://github.com/dbkaplun/domscii">Fork on Github</a></p>
     </header>
+
+    <hr>
+
+    <h2>
+      Example:
+      <select>
+        <option value="image" selected>View image</option>
+        <option value="ascii">         View ASCII</option>
+      </select>
+    </h2>
+
+    <img src="spec/fixtures/googlelogo_color_272x92dp.png" width="544" height="184">
     <pre></pre>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta1/html2canvas.min.js"></script>
     <script src="domscii.js"></script>
     <script>
-var inEl = document.querySelector('header');
-var outEl = document.querySelector('pre');
+(function () {
+  var select = document.querySelector('select');
+  var img = document.querySelector('img');
+  var pre = document.querySelector('pre');
 
-domscii({el: inEl}).then(function (text) {
-  outEl.innerHTML = text;
-});
+  var viewing = select.value;
+  var lastEvt;
+
+  select.addEventListener('change', function (evt) {
+    viewing = select.value;
+    render();
+  });
+  pre.addEventListener('mousemove', function (evt) {
+    lastEvt = evt;
+    render();
+  });
+  pre.addEventListener('mouseleave', function (evt) {
+    lastEvt = null;
+    render();
+  });
+
+  domscii({el: img}).then(function (text) {
+    pre.innerHTML = text;
+    pre.style.top  = img.offsetTop  + 'px';
+    pre.style.left = img.offsetLeft + 'px';
+    render();
+  });
+  function render () {
+    [].forEach.call(pre.querySelectorAll('span'), function (span) {
+      var closeToMouse = !!lastEvt && Math.sqrt(
+        Math.pow(span.offsetLeft - lastEvt.offsetX, 2) +
+        Math.pow(span.offsetTop  - lastEvt.offsetY, 2)
+      ) < 50;
+      span.style.visibility = closeToMouse === (viewing === 'image')
+        ? 'visible'
+        : 'hidden';
+    });
+  }
+}());
     </script>
   </body>
 </html>
