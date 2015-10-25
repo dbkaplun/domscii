@@ -23,7 +23,7 @@ domscii(el).then(handleASCII);
 domscii({
     el: undefined, // The element to render to ASCII. (No default value.)
 
-    template: '<span style="color:${color}">${char}</span>', // How each character is formatted. Replaces `${color}` with an RGB value, and `${char}` with a representative ASCII character. For plaintext rendering, use `${char}`.
+    template: '<span style="color:${color}">${char}</span>', // How each character is formatted. Replaces '${color}' with an RGB value, and '${char}' with a representative ASCII character. For plaintext rendering, use '${char}'.
     chars: '@#$=*!;:~-,.', // The ASCII characters to use for rendering, darkest to lightest. This can also be an array of strings.
     newline: '\n', // The string to use for starting a new line of ASCII.
     scaleX: 7.875, // Determines how many pixels are used for one ASCII character, horizontally.
