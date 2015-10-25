@@ -15,8 +15,8 @@
     //template: '${char}',
     chars: '@#$=*!;:~-,.', // can be array of strings
     newline: '\n',
-    scaleX: 7.5,
-    scaleY: 9
+    scaleX: 7.875,
+    scaleY: 15
   };
   function domscii (opts) {
     if (opts instanceof Node) opts = {el: opts};
