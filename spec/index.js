@@ -31,7 +31,7 @@ test("domscii", function (t) {
             t.test("encodes an <img> correctly", function (st) {
                 st.plan(1);
 
-                var src = 'fixtures/afghan-girl-portrait_1563_990x742.jpg';
+                var src = 'fixtures/googlelogo_color_272x92dp.png';
 
                 nightmare
                     .evaluate(function (src) {
