@@ -17,7 +17,7 @@
 
   var self = this;
   self.viewing = 'ascii';
-  self.html = '<h1 style="font-size:1000%;margin:0">DOMSCII</h1>';
+  self.html = '<img src="spec/fixtures/googlelogo_color_272x92dp.png">';
   self._chars = [];
   self.updateHTML = function (evt) {
     self.html = self.tags.domscii.opts.html = evt.target.value;
