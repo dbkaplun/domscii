@@ -11,11 +11,15 @@
 
   var self = this;
   self.render = function () {
-    self.dom.innerHTML = self.opts.html;
-    domscii({el: self.dom}).then(function (ascii) {
-      self.ascii.innerHTML = ascii;
-      if (typeof self.opts.onrender === 'function') self.opts.onrender();
+    requestAnimationFrame(function () {
+      self.dom.innerHTML = self.opts.html;
+      domscii({el: self.dom}).then(function (ascii) {
+        self.ascii.innerHTML = ascii;
+        if (typeof self.opts.onrender === 'function') self.opts.onrender();
+      });
     });
   };
+  self.imagesLoaded = imagesLoaded(self.root);
+  self.imagesLoaded.on('always', self.render);
   self.on('mount', self.render);
 </domscii>
