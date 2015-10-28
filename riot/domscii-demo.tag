@@ -10,6 +10,7 @@
   <domscii html={html} onrender={onDomsciiRender} onmousemove={setMouse} onmouseout={clearMouse} />
 
   <style>
+    domscii-demo { display: block; }
     domscii-demo .domscii-demo-header { display: inline-block; vertical-align: top; margin-right: 20px; }
     domscii-demo h2 { margin: 0 0 5px 0; }
     domscii-demo domscii div { margin-top: 20px; }
