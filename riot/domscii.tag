@@ -5,7 +5,7 @@
   </div>
 
   <style>
-    domscii { position: relative; }
+    domscii { position: relative; display: block; }
     domscii pre { position: absolute; top: 0; left: 0; margin: 0; }
   </style>
 
