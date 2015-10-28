@@ -26,18 +26,18 @@
   };
   self.onDomsciiRender = function () {
     self._chars = [].slice.call(self.tags.domscii.root.querySelectorAll('pre span'));
-    self.render();
+    self.renderCloseToMouse();
   };
   self.updateViewing = function (evt) {
     self.viewing = evt.target.value;
-    self.render();
+    self.renderCloseToMouse();
   };
   self.setMouse = function (evt) {
     self.mouseEvt = evt;
-    self.render();
+    self.renderCloseToMouse();
   };
   self.clearMouse = self.setMouse.bind(self, null);
-  self.render = function () {
+  self.renderCloseToMouse = function () {
     requestAnimationFrame(function () {
       if (self.mouseEvt) {
         var x = self.mouseEvt.offsetX || self.mouseEvt.layerX;
