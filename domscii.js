@@ -26,13 +26,14 @@
 
     return html2canvas(opts.el).then(function (canvas) {
       var data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
+      var _slice = [].slice.bind(data);
 
       var lines = [];
       for (var y = 0; y < canvas.height; y += opts.scaleY) {
         var line = '';
         for (var x = 0; x < canvas.width; x += opts.scaleX) {
           var i = Math.floor(y*canvas.width + x)*4;
-          var rgba = data.slice(i, i+4);
+          var rgba = _slice(i, i+4);
           var char = opts.chars[Math.round(factor*rms(rgba.slice(0, 3)))];
           line += opts.template
             .replace('${char}', char)
