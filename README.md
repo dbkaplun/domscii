@@ -5,7 +5,7 @@ Convert arbitrary DOM elements to ASCII
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta1/html2canvas.min.js"></script>
-<script src="https://rawgit.com/dbkaplun/domscii/v1.0.2/domscii.js"></script>
+<script src="https://rawgit.com/dbkaplun/domscii/v1.0.3/domscii.js"></script>
 ```
 
 ## Usage
