@@ -1,6 +1,6 @@
 {
   "name": "domscii",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "DOM to ASCII",
   "main": "domscii.js",
   "scripts": {
