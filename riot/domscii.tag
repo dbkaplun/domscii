@@ -11,13 +11,15 @@
 
   var self = this;
   self.render = function () {
-    setTimeout(function () { // FIXME: requestAnimationFrame is clearly better here but doesn't work sometimes, only on reload!?
+    requestAnimationFrame(function () {
       self.dom.innerHTML = self.opts.html;
-      domscii({el: self.dom}).then(function (ascii) {
-        self.ascii.innerHTML = ascii;
-        if (typeof self.opts.onrender === 'function') self.opts.onrender();
+      requestAnimationFrame(function () {
+        domscii({el: self.dom}).then(function (ascii) {
+          self.ascii.innerHTML = ascii;
+          if (typeof self.opts.onrender === 'function') self.opts.onrender();
+        });
       });
-    }, 10);
+    });
   };
   self.imagesLoaded = imagesLoaded(self.root);
   self.imagesLoaded.on('always', self.render);
