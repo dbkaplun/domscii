@@ -39,14 +39,10 @@
   self.clearMouse = self.setMouse.bind(self, null);
   self.renderCloseToMouse = function () {
     requestAnimationFrame(function () {
-      if (self.mouseEvt) {
-        var x = self.mouseEvt.offsetX || self.mouseEvt.layerX;
-        var y = self.mouseEvt.offsetY || self.mouseEvt.layerY;
-      }
       self._chars.forEach(function (span) {
         var closeToMouse = !!self.mouseEvt && Math.sqrt(
-          Math.pow(span.offsetLeft - x, 2) +
-          Math.pow(span.offsetTop  - y, 2)
+          Math.pow(span.offsetLeft - self.mouseEvt.layerX, 2) +
+          Math.pow(span.offsetTop  - self.mouseEvt.layerY, 2)
         ) < 50;
         span.style.visibility = closeToMouse === (self.viewing === 'dom')
           ? 'visible'
