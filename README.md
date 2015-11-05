@@ -29,6 +29,7 @@ domscii({
     chars: '@#$=*!;:~-,.', // The ASCII characters to use for rendering, darkest to lightest. This can also be an array of strings.
     newline: '\n', // The string to use for starting a new line of ASCII.
     scaleX: 7.875, // Determines how many pixels are used for one ASCII character, horizontally.
-    scaleY: 15 // Determines how many pixels are used for one ASCII character, vertically.
+    scaleY: 15, // Determines how many pixels are used for one ASCII character, vertically.
+    html2canvas: {} // Specify html2canvas options. http://html2canvas.hertzen.com/documentation.html#available-options
 });
 ```
