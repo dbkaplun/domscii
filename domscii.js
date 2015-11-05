@@ -16,15 +16,17 @@
     chars: '@#$=*!;:~-,.', // can be array of strings
     newline: '\n',
     scaleX: 7.875,
-    scaleY: 15
+    scaleY: 15,
+    html2canvas: {}
   };
   function domscii (opts) {
     if (opts instanceof Node) opts = {el: opts};
+    opts.html2canvas = extend(domscii.DEFAULTS.html2canvas, opts.html2canvas);
     opts = extend(domscii.DEFAULTS, opts);
 
     var factor = (opts.chars.length-1)/255;
 
-    return html2canvas(opts.el).then(function (canvas) {
+    return html2canvas(opts.el, opts.html2canvas).then(function (canvas) {
       var data = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;
       var _slice = [].slice.bind(data);
 
