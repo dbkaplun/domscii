@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "express": "^4.13.4",
-    "nightmare": "^2.3.3",
+    "nightmare": "^2.3.4",
     "tape": "^4.5.1"
   }
 }
